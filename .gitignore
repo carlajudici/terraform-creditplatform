@@ -2,8 +2,6 @@
 **/.terraform/
 *.tfstate
 *.tfstate.backup
-*.tfvars
-terraform.tfvars
 .terraform.lock.hcl
 
 # Pastas específicas de provedores
