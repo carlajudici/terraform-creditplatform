@@ -1,0 +1,22 @@
+# Arquivos locais do Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+terraform.tfvars
+.terraform.lock.hcl
+
+# Pastas específicas de provedores
+bootstrap/.terraform/
+infrastructure/.terraform/
+
+# Arquivos de sistema
+.DS_Store
+*.log
+*.tmp
+
+# Arquivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo

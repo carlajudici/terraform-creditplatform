@@ -1,0 +1,33 @@
+name: Terraform Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: us-east-1
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v3
+
+      - name: Bootstrap
+        run: |
+          cd bootstrap
+          terraform init
+          terraform apply -auto-approve
+
+      - name: Infrastructure
+        run: |
+          cd infrastructure
+          terraform init
+          terraform apply -auto-approve \
+          -var-file=../environments/dev/terraform.tfvars
